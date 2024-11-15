@@ -47,8 +47,10 @@ jobs:
         run: |
           git config user.name "triggergun"
           git config user.email "930572358@qq.com"
+          git clone https://github.com/triggergun/english.git  # 克隆远程仓库
+          cd english
           git checkout master  # 切换到 master 分支
-          git pull  # 拉取最新代码
+          # git pull  # 拉取最新代码
           cp -r ../build/* .  # 复制构建源码结果到工作目录到当前的master下
           git add .
           git commit -m "Update master with latest build results"
