@@ -46,6 +46,7 @@ jobs:
           pwd
           cd english
           git config user.name "triggergun"
+          git config user.password 'lyp20015018'
           git config user.email "930572358@qq.com"
           pwd
           npm install
