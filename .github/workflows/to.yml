@@ -12,6 +12,7 @@ jobs:
 #      - name: Checkout Code
 #        uses: actions/checkout@v2
 
+      # /home/runner/work/english/english
       # 步骤2：安装 Node.js
       - name: Install Node.js
         uses: actions/setup-node@v2
@@ -42,6 +43,8 @@ jobs:
 
       - name: Install Dependencies And Build VuePress
         run: |
+          pwd
+          cd english
           pwd
           npm install
           npm run build
