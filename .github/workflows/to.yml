@@ -23,6 +23,13 @@ jobs:
        # 步骤4：构建 VuePress 的构建命令
       - name: Build VuePress
         run: npm run build
+
+
+      - name: Show Build
+        run: |
+          tree
+          pwd
+
       # 步骤5：提交构建结果到 pages 分支，并将构建的源码复制到 build 目录下
       - name: Commit Build Results to master Branch
         run: |
