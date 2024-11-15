@@ -18,6 +18,11 @@ jobs:
         with:
           node-version: '14.17.0'
       # 步骤3：安装项目依赖
+      - name: Show
+        run: |
+          pwd
+          tree   
+
 
       - name: Remote Pull Branch
         run: |
