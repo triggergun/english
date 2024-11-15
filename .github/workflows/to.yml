@@ -27,7 +27,10 @@ jobs:
 
       - name: Show Build
         run: |
-          tree
+          pwd
+          cd docs
+          pwd
+          cd .vuepress
           pwd
 
       # 步骤5：提交构建结果到 pages 分支，并将构建的源码复制到 build 目录下
@@ -42,6 +45,7 @@ jobs:
           # git add node_modules  # 添加到工作树中
           # git commit -m "Build commit node_modules"
           # git push origin master  # 推送构建结果到 pages 分支，这里提交的是源码的目录
+          # /home/runner/work/english/english
           cp  -r docs/.vuepress/dist ../build  # 将构建的源码copy到上一级目录。指在当前的虚拟机里面的目录
 
       - name: Pull branch
