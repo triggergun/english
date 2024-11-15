@@ -49,7 +49,7 @@ jobs:
           npm install
           npm run build
           git add .
-          git commit -m "Build commit node_modules"
+          git commit -m "Build commit"
           git push origin master  # 推送构建结果到 pages 分支，这里提交的是源码的目录
           # /home/runner/work/english/english
           cp  -r docs/.vuepress/dist ../build  # 将构建的源码copy到上一级目录。指在当前的虚拟机里面的目录
