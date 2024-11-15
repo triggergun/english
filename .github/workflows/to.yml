@@ -32,6 +32,7 @@ jobs:
           pwd
           cd .vuepress
           pwd
+          ls -a
 
       # 步骤5：提交构建结果到 pages 分支，并将构建的源码复制到 build 目录下
       - name: Commit Build Results to master Branch
@@ -59,11 +60,13 @@ jobs:
           git config user.name "triggergun"
           git config user.email "930572358@qq.com"
           git clone https://github.com/triggergun/english.git  # 克隆远程仓库
+          pwd
+          ls -a
           cd english
-          git checkout master  # 切换到 master 分支
+#          git checkout master  # 切换到 master 分支
           # git pull  # 拉取最新代码
           cp -r ../build/* .  # 复制构建源码结果到工作目录到当前的master下
           git add .
           git commit -m "Update master with latest build results"
-          git remote add origin_with_token_with_branch https://github.com/triggergun/english.git
+#          git remote add origin_with_token_with_branch https://github.com/triggergun/english.git
           git push origin_with_token_with_branch master  # 推送构建结果到 master 分支,master 是可以直接部署的网页源码。
