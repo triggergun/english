@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest   # 底层的系统镜像
     steps:
       # 步骤1：检出代码到工作目录
-      - name: Checkout Code
-        uses: actions/checkout@v2
+#      - name: Checkout Code
+#        uses: actions/checkout@v2
 
       # 步骤2：安装 Node.js
       - name: Install Node.js
@@ -25,9 +25,10 @@ jobs:
           git config user.name "triggergun"
           git config user.email "930572358@qq.com"
           pwd
-          ls -a
+          tree
           cd english
-          ls -a
+          pwd
+          tree
 
 
       - name: Install Dependencies And Build VuePress
