@@ -18,13 +18,6 @@ jobs:
         with:
           node-version: '14.17.0'
       # 步骤3：安装项目依赖
-      - name: Install Dependencies
-        run: npm install
-       # 步骤4：构建 VuePress 的构建命令
-      - name: Build VuePress
-        run: npm run build
-
-
       - name: Show Build
         run: |
           pwd
@@ -34,39 +27,36 @@ jobs:
           pwd
           ls -a
 
-      # 步骤5：提交构建结果到 pages 分支，并将构建的源码复制到 build 目录下
-      - name: Commit Build Results to master Branch
+      - name: Remote Pull Branch
         run: |
-          # git config user.name "triggergun"
-          # git config user.email "930572358@qq.com"
-          # git checkout master  # 切换到 master 分支
-          # git config advice.addIgnoredFile false
-          # git add -f docs/      # 添加：指定目录
-          # git commit -m "Build docs dir"
-          # git add node_modules  # 添加到工作树中
-          # git commit -m "Build commit node_modules"
-          # git push origin master  # 推送构建结果到 pages 分支，这里提交的是源码的目录
+          git clone https://github.com/triggergun/english.git  # 克隆远程仓库
+          git config user.name "triggergun"
+          git config user.email "930572358@qq.com"
+          pwd
+          ls -a
+          cd english
+          ls -a
+
+
+      - name: Install Dependencies And Build VuePress
+        run: |
+          pwd
+          npm install
+          npm run build
+          git add .
+          git commit -m "Build commit node_modules"
+          git push origin master  # 推送构建结果到 pages 分支，这里提交的是源码的目录
           # /home/runner/work/english/english
           cp  -r docs/.vuepress/dist ../build  # 将构建的源码copy到上一级目录。指在当前的虚拟机里面的目录
 
-      - name: Pull branch
-        run: |
-          git fetch
-          git branch -a
 
-      # 将构建的结果复制到master分支上
+      # 在当前系统上
       - name: Copy Build Results to Master Branch
         run: |
-          git config user.name "triggergun"
-          git config user.email "930572358@qq.com"
-          git clone https://github.com/triggergun/english.git  # 克隆远程仓库
+          git checkout master  # 切换到 master 分支
           pwd
           ls -a
-          # cd english
-          # git checkout master  # 切换到 master 分支
-          # git pull  # 拉取最新代码
           cp -r ../build/* .  # 复制构建源码结果到工作目录到当前的master下
           git add .
           git commit -m "Update master with latest build results"
-          # git remote add origin_with_token_with_branch https://github.com/triggergun/english.git
           git push origin_with_token_with_branch master  # 推送构建结果到 master 分支,master 是可以直接部署的网页源码。
