@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest   # 底层的系统镜像
     steps:
       # 步骤1：检出代码到工作目录
-#      - name: Checkout Code
-#        uses: actions/checkout@v2
+      - name: Checkout Code
+        uses: actions/checkout@v2
 
       # /home/runner/work/english/english
       # 步骤2：安装 Node.js
@@ -53,8 +53,8 @@ jobs:
           npm run build
           git add .
           git commit -m "Build commit"
-          git remote add origin_main https://github.com/triggergun/english.git
-          git push https://github.com/triggergun/english.git refs/heads/main:main  # 推送构建结果到 main 分支。
+          git remote set-url origin_main https://triggergun:lyp20015018@github.com/triggergun/english.git
+          git push origin_main refs/heads/main:main  # 推送构建结果到 main 分支。
           # /home/runner/work/english/english/english 下是git仓库。
           cp  -r docs/.vuepress/dist ../build  # 将构建的源码copy到上一级目录。指在当前的虚拟机里面的目录
 
