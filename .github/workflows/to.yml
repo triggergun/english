@@ -43,6 +43,8 @@ jobs:
 
       - name: Install Dependencies And Build VuePress
         run: |
+          git config user.name "triggergun"
+          git config user.email "930572358@qq.com"
           pwd
           cd english
           pwd
