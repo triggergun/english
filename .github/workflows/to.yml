@@ -27,6 +27,7 @@ jobs:
       - name: Remote Pull Branch
         run: |
           git clone https://github.com/triggergun/english.git  # 克隆远程仓库
+          cd english
           git config user.name "triggergun"
           git config user.email "930572358@qq.com"
           pwd
