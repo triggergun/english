@@ -26,10 +26,13 @@ jobs:
           git config user.email "930572358@qq.com"
           pwd
           tree
-          cd english
           pwd
           tree
 
+      - name: Show
+        run: |
+          pwd
+          tree      
 
       - name: Install Dependencies And Build VuePress
         run: |
