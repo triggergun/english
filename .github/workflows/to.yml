@@ -18,15 +18,6 @@ jobs:
         with:
           node-version: '14.17.0'
       # 步骤3：安装项目依赖
-      - name: Show Build
-        run: |
-          pwd
-          cd docs
-          pwd
-          cd .vuepress
-          # /home/runner/work/english/english/docs
-          pwd
-          # ls -l
 
       - name: Remote Pull Branch
         run: |
