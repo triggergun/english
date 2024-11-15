@@ -24,8 +24,9 @@ jobs:
           cd docs
           pwd
           cd .vuepress
+          # /home/runner/work/english/english/docs
           pwd
-          ls -a
+          ll
 
       - name: Remote Pull Branch
         run: |
