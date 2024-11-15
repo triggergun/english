@@ -1,0 +1,56 @@
+﻿name: VuePress CI/CD
+on:
+  push:
+    branches:
+      - main  # 监听 main 分支的 push 事件
+jobs:
+  # 任务1 ： 构建项目到 master 分支，并且部署pages服务。
+  build_and_deploy:
+    runs-on: ubuntu-latest   # 底层的系统镜像
+    steps:
+      # 步骤1：检出代码到工作目录
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # 步骤2：安装 Node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.17.0'
+      # 步骤3：安装项目依赖
+      - name: Install Dependencies
+        run: npm install
+       # 步骤4：构建 VuePress 的构建命令
+      - name: Build VuePress
+        run: npm run build
+      # 步骤5：提交构建结果到 pages 分支，并将构建的源码复制到 build 目录下
+      - name: Commit Build Results to master Branch
+        run: |
+          # git config user.name "triggergun"
+          # git config user.email "930572358@qq.com"
+          # git checkout master  # 切换到 master 分支
+          # git config advice.addIgnoredFile false
+          # git add -f docs/      # 添加：指定目录
+          # git commit -m "Build docs dir"
+          # git add node_modules  # 添加到工作树中
+          # git commit -m "Build commit node_modules"
+          # git push origin master  # 推送构建结果到 pages 分支，这里提交的是源码的目录
+          cp  -r docs/.vuepress/dist ../build  # 将构建的源码copy到上一级目录。指在当前的虚拟机里面的目录
+
+      - name: Pull branch
+        run: |
+          git fetch
+          git branch -a
+
+      # 将构建的结果复制到master分支上
+      - name: Copy Build Results to Master Branch
+        run: |
+          git config user.name "triggergun"
+          git config user.email "930572358@qq.com"
+          git checkout master  # 切换到 master 分支
+          git pull  # 拉取最新代码
+          cp -r ../build/* .  # 复制构建源码结果到工作目录到当前的master下
+          git add .
+          git commit -m "Update master with latest build results"
+          git remote add origin_with_token_with_branch https://github.com/triggergun/english.git
+          git push origin_with_token_with_branch master  # 推送构建结果到 master 分支,master 是可以直接部署的网页源码。
