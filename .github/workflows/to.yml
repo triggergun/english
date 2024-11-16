@@ -39,10 +39,17 @@ jobs:
           git push origin_with_token_with_branch main
           cp  -r docs/.vuepress/dist ../build  # 将构建的源码copy到上一级目录。指在当前的虚拟机里面的目录
 
+
+      - name: Pull Master branch
+        run: |
+          git fetch
+          git checkout master
+          git branch -a
+
+
       # 在当前系统上
       - name: Copy Build Results to Master Branch
         run: |
-          git checkout master  # 切换到 master 分支
           cp -r ../build/* .  # 复制构建源码结果到工作目录到当前的master下
 
       - name: Show Master
