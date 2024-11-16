@@ -12,24 +12,28 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
+
       # /home/runner/work/english/english
       # 步骤2：安装 Node.js
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14.17.0'
+
       # 步骤3：安装项目依赖
-      - name: Show
+      - name: Show Main Branch
         run: |
           pwd
           tree   
 
+      # 构建main 分支的源码
       - name: Install Dependencies And Build VuePress
         run: |
           npm install
           npm run build
 
-      - name: main branch
+      # 构建结果提交 Main
+      - name: Main branch
         run: |
           git config user.name "triggergun"
           git config user.email "930572358@qq.com"
@@ -40,15 +44,16 @@ jobs:
           cp  -r docs/.vuepress/dist ../build  # 将构建的源码copy到上一级目录。指在当前的虚拟机里面的目录
 
 
-      - name: Pull Master branch
+
+      # 拉取分支并。 展示全部的分支。
+      - name: Pull branch
         run: |
           git fetch
           git checkout master
           git branch -a
 
 
-
-      - name: Show Master1
+      - name: Show Pwd01
         run: |
           pwd
           tree
@@ -57,15 +62,16 @@ jobs:
       - name: Copy Build Results to Master Branch
         run: |
           cp -r ../build/* .  # 复制构建源码结果到工作目录到当前的master下
-          rm -rf ./node_modules
+          rm -rf ./node_modules  # 删除依赖包
 
-      - name: Show Master2
+      - name: Show Pwd02
         run: |
           pwd
           tree
 
 
-      - name: Show Master1
+      # 提交 master 分支
+      - name: Commit Master
         run: |
           git add .
           git commit -m "Update master with latest build results"
