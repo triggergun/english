@@ -21,6 +21,11 @@
   },
   "homepage": "https://github.com/triggergun/english#readme",
   "devDependencies": {
-    "vuepress": "^1.9.10"
+    "vuepress": "^1.9.10",
+    "vuepress-plugin-medium-zoom": "^1.1.9",
+    "vuepress-plugin-sakura": "^1.2.1"
+  },
+  "dependencies": {
+    "markdown-it-disable-url-encode": "^1.0.1"
   }
 }
