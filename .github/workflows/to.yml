@@ -69,5 +69,4 @@ jobs:
         run: |
           git add .
           git commit -m "Update master with latest build results"
-          git remote add origin_with_token_with_branch https://github.com/triggergun/english.git
           git push origin_with_token_with_branch master  # 推送构建结果到 master 分支,master 是可以直接部署的网页源码。
