@@ -57,7 +57,7 @@ jobs:
       - name: Copy Build Results to Master Branch
         run: |
           cp -r ../build/* .  # 复制构建源码结果到工作目录到当前的master下
-          rm -rf ./node_modules/*
+          rm -rf ./node_modules
 
       - name: Show Master2
         run: |
