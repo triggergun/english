@@ -44,7 +44,49 @@ module.exports = {
         lastUpdated: 'Last Updated',
         extraWatchFiles: [
             '.vuepress/config.js', // 使用相对路径
-        ]
+        ],
+
+
+
+        // ------------------------------------------   侧边栏的目录 start  ----------------------------
+
+        sidebar: {
+            // ==================================   首页      软件资源    ====================
+            '/eglish/': [
+
+                // 多个目录
+                {
+                    title: '寒门英语资料01',
+                    collapsable: false,
+                    children: [
+                        '/eglish/first/eglish01',
+                        '/eglish/first/eglish02',
+                    ],
+
+                },
+                {
+                    title: '寒门英语资料02',
+                    collapsable: false,
+                    children: [
+                        '/eglish/second/eglish01',
+                        '/eglish/second/eglish02',
+                    ],
+
+                },
+
+            ],
+
+
+
+
+        },
+
+
+
+
+
+        // ------------------------------------------   侧边栏的目录 end  ----------------------------
+
     },
 
 
