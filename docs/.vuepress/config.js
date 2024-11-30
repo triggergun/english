@@ -56,7 +56,7 @@ module.exports = {
 
                 // 多个目录
                 {
-                    title: '寒门英语资料01',
+                    title: '寒门英语资料分享',
                     collapsable: false,
                     children: [
                         '/eglish/first/eglish01',
